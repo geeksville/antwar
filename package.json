@@ -8,11 +8,11 @@
   ],
   "scripts": {
     "dev": "npm-run-all --parallel \"dev:rs\" \"dev:ts\"",
-    "dev:rs": "cd voxelize && cross-env RUST_BACKTRACE=full cargo watch -w server -x \"build --release\"",
+    "dev:rs": "cross-env RUST_BACKTRACE=full cargo watch -w antserve -x \"build --release\"",
     "dev:ts": "lerna run --parallel dev",
     "demo": "npm-run-all --parallel \"demo:ts\" \"demo:rs\"",
     "demo:ts": "cd client && yarn demo",
-    "demo:rs": "cd voxelize && cross-env RUST_BACKTRACE=1 cargo watch -w server -x \"run --release --example demo\"",
+    "demo:rs": "cross-env RUST_BACKTRACE=1 cargo watch -w antserve -x \"run --release\"",
     "test-dev": "jest --watch",
     "test": "jest",
     "lint": "eslint --fix --ext js,ts,tsx .",
