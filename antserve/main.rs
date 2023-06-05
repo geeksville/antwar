@@ -60,10 +60,13 @@ async fn main() -> std::io::Result<()> {
     let mut server = Server::new()
         .port(4000)
         .secret("test")
-        .serve("./examples/client/dist")
+        // .serve("./examples/client/dist") 
+        // FIXME the JS build seems busted - it isn't packaging the JS which is why the build script needs to run vita
+        // on port 3000 to serve the JS code
         .registry(&registry)
         .build();
 
+    /* FIXME - only flat world for now 
     server
         .add_world(setup_main_world())
         .expect("Could not create world1.");
@@ -75,6 +78,7 @@ async fn main() -> std::io::Result<()> {
     server
         .add_world(setup_terrain_world())
         .expect("Could not create terrain world.");
+    */
 
     server
         .add_world(setup_flat_world(&registry))
